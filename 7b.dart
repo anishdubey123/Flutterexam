@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
+                decoration: InputDecoration(labelText: "Enter Number"),
                 validator: (value) { // 3. Validator logic
                   if (value == null || value.isEmpty) return 'Enter text';
+                  if (int.tryParse(value) == null) {
+                        return 'Enter Number only';
+                    }
                   return null;
                 },
               ),
