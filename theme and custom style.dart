@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue, // Theme's default color
-            foregroundColor: Colors.white, // Theme's default text color
+            backgroundColor: Colors.blue, 
+            foregroundColor: Colors.white,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           ),
         ),
@@ -39,10 +39,9 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {},
-              // This 'style' property overrides the theme
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Custom style
-                padding: EdgeInsets.all(20),  // Custom style
+                backgroundColor: Colors.red,
+                padding: EdgeInsets.all(20),
               ),
               child: Text('Custom Style Button'),
             ),
