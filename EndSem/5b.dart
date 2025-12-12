@@ -4,38 +4,25 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp> createState() => _State();
 }
 
-// 1. Add Mixin
-class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    // 2. Initialize Controller
-    _controller = AnimationController(
-      duration: Duration(seconds: 2), 
-      vsync: this
-    )..repeat(reverse: true); // Auto loop
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose(); // 3. Dispose
-    super.dispose();
-  }
+class _State extends State<MyApp> {
+  double size = 100;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          // 4. Use Transition Widget
-          child: FadeTransition(
-            opacity: _controller,
-            child: Icon(Icons.favorite, size: 100, color: Colors.red),
+          child: GestureDetector(
+            onTap: () => setState(() => size = size == 100 ? 200 : 100),
+            child: AnimatedContainer( // The magic widget
+              duration: Duration(seconds: 1),
+              width: size,
+              height: size,
+              color: Colors.blue,
+            ),
           ),
         ),
       ),
